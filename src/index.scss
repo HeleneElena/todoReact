@@ -4,6 +4,9 @@
     list-style: none;
     outline: none;
     font-family: 'Roboto', system-ui, -apple-system, sans-serif;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 .todo {
     position: absolute;
@@ -19,10 +22,37 @@
     &__sidebar {
         background-color: #F4F6F8;
         width: 12.5rem;
-        height: calc(100% - 120px);
+        height: 100%;
         border-right: 1px solid #F4F6F8;
         padding: 60px 20px;
-    }
+    }  
+}
 
-    
+.btn {
+    background: #4DD599;
+    border-radius: 4px;
+    color: #fff;
+    border: 0;
+    padding: 10px 20px;
+    cursor: pointer;
+
+    &:hover {
+        background: darken(#4DD599, 6%)
+    }
+    &:active {
+        background: darken(#4DD599, 10%)
+    }
+}
+
+.field {
+    background: #fff;
+    border: 1px solid #EFEFEF;
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 8px 12px;
+    width: 100%;
+
+    &:focus {
+        border-color: #dbdbdb;
+    }
 }
