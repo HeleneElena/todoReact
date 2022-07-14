@@ -31,7 +31,7 @@
       "id": 6
     },
     {
-      "name": "Кurs по ReactJS ToDo",
+      "name": "Кurs ReactJS",
       "colorId": 7,
       "id": 7
     }
@@ -52,7 +52,7 @@
     {
       "id": 3,
       "listId": 2,
-      "text": "ReactJS Hooks (useState, useReducer, useEffect и т.д.)",
+      "text": "ReactJS Hooks",
       "completed": true
     },
     {

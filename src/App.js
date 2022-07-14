@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AddButtonList from './components/AddButtonList';
 import List from './components/List';
 
@@ -7,6 +7,12 @@ import db from '../src/sources/db.json';
 import './App.css';
 
 function App() {
+  const [lists, setLists] = useState(
+        db.lists.map(item => {
+          item.color = db.colors.filter(color => color.id === item.colorId)[0].name;
+          return item;
+        })
+  );
 
   return (
     <div className="todo">
@@ -28,22 +34,8 @@ function App() {
           },
         ]} />
 
-        <List items={[
-          {
-            name: "Geschenk",
-            color: 'green',
-          },
-          {
-            name: "Sport",
-            color: 'pink',
-            active: true
-          },
-          {
-            name: "Film",
-            color: 'blue',
-          },
-
-        ]} 
+        <List 
+        items={lists} 
         isRemovable
         />
 {/*Knopf */}

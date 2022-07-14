@@ -13,7 +13,11 @@
             align-items: center;
             padding: 10px 12px;
             cursor: pointer;
-            margin-bottom: 5px;
+            margin-bottom: -10px;
+
+            &:hover {
+                background: rgba(255, 255, 255, 0.61);
+            }
     
             &.active {
                 background: #FFFFFF;

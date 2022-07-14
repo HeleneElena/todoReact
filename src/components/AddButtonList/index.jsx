@@ -9,6 +9,15 @@ import './AddButtonList.scss';
 const AddButtonList = ({ colors }) => {
   const [visiblePopup, setVisiblePopup] = useState(false);
   const [seletedColor, setSeletedColor] = useState(colors[0].id);
+  const [inputValue, setInputValue] = useState('');
+
+  const addList = () => {
+    if(!inputValue) {
+      alert('Geben Sie den Namen der Liste an');
+      return; // остановка, он далее не пойдет
+    }
+    console.log({ id: 1, name: inputValue, colorId: seletedColor });
+  }
 
     return (
       <div className="add-list">
@@ -46,7 +55,13 @@ const AddButtonList = ({ colors }) => {
               src={closeSvg} 
               alt="close button" 
               className="add-list__popup-close-btn" />
-            <input className="field" type="text" placeholder="Name der Liste" />
+            <input  
+              value={inputValue}
+              onChange={e => {setInputValue(e.target.value)}}
+              className="field" 
+              type="text" 
+              placeholder="Name der Liste" />
+
             <div className="add-list__popup-colors">
               {colors.map(color => ( 
                   <Badge 
@@ -57,7 +72,7 @@ const AddButtonList = ({ colors }) => {
                   />
               ))}
             </div>
-            <button className="btn">Hinzufügen</button>
+            <button onClick={addList} className="btn">Hinzufügen</button>
         </div>
         )}
        </div>
