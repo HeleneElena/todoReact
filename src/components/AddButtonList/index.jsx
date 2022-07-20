@@ -6,18 +6,26 @@ import closeSvg from '../../sources/img/closes.svg';
 
 import './AddButtonList.scss';
 
-const AddButtonList = ({ colors }) => {
+const AddButtonList = ({ colors, onAdd }) => {
   const [visiblePopup, setVisiblePopup] = useState(false);
   const [seletedColor, setSeletedColor] = useState(colors[0].id);
   const [inputValue, setInputValue] = useState('');
+
+  const onClose = () => {
+    setVisiblePopup(false); // скрыла окно, где добавляется дело
+    setInputValue(''); // очистила инпут этого окошка
+    setSeletedColor(colors[0].id); // цвет опять в начальном позиции на сером
+  };
 
   const addList = () => {
     if(!inputValue) {
       alert('Geben Sie den Namen der Liste an');
       return; // остановка, он далее не пойдет
     }
-    console.log({ id: 1, name: inputValue, colorId: seletedColor });
-  }
+    const color = colors.filter(c => c.id === seletedColor)[0].name;
+    onAdd({ id: Math.random(), name: inputValue, color });
+    onClose();
+  };
 
     return (
       <div className="add-list">
@@ -51,7 +59,7 @@ const AddButtonList = ({ colors }) => {
         {visiblePopup && (
           <div className="add-list__popup">
             <img 
-              onClick={() => setVisiblePopup(false)}
+              onClick={onClose}
               src={closeSvg} 
               alt="close button" 
               className="add-list__popup-close-btn" />
